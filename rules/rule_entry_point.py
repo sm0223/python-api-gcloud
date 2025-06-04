@@ -1,4 +1,4 @@
-from mpp import Result 
+from generated.mpp import Result 
 def runRule(mpp): 
     res = Result()       
     try:
