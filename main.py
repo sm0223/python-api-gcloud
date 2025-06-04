@@ -33,7 +33,7 @@ def hello():
     })
 
 
-@app.route('/bre033', methods=['POST'])
+@app.route('/bre034', methods=['POST'])
 def bre033():
     """POST endpoint to create a new item"""
     try:
@@ -50,12 +50,14 @@ def bre033():
         # ----------------------------------------RUN RULES----------------------------------------
         mpp.result = runRule(mpp)     
         # ----------------------------------------CALL DIFFERENT SERVICE---------------------------
-        mpp.result = getUnderwritingDetails("https://test3-1044504553139.us-central1.run.app")
+        data = getUnderwritingDetails("https://python-api-cloud-1044504553139.us-central1.run.app")
+
         # ----------------------------------------RETURN RESPONSE----------------------------------
         return jsonify({
             'status': 'success',
             'message': 'Item created successfully',
-            'data': dataclasses.asdict(mpp)
+            'data': dataclasses.asdict(mpp),
+            'fromBRE033': data
         }), 201
         
     except Exception as e:
